@@ -211,7 +211,6 @@ form.addEventListener("submit", function (e) {
   // submit to the server if the form is valid
   if (isFormValid) {
     successMessage.style.display = "block";
-    animateProgress();
     setTimeout(function () {
       successMessage.style.display = "none";
     }, 3000);
@@ -268,33 +267,17 @@ const closeBtn = document.getElementById("close_btn");
 
 closeBtn.addEventListener("click", () => {
   successMessage.style.display = "none";
-  // console.log(interval);
-  if (interval) {
-    clearInterval(interval);
-  }
 });
 
-function animateProgress() {
-  let width = 100;
-  interval = setInterval(frame, 30); // Adjust the animation speed by changing the interval value
-
-  function frame() {
-    if (width <= 0) {
-      clearInterval(interval);
-    } else {
-      width--;
-      progress.style.width = width + "%";
-    }
-  }
-}
-
 const dropdown = document.getElementById("dropdown");
+const dropdownlist = document.querySelectorAll("#dropdown-list");
 dropdown.addEventListener("click", () => {
-  const dropdownlist = document.querySelectorAll("#dropdown-list");
+  console.log("clicked");
   dropdownlist.forEach((element) => {
     element.classList.toggle("hidden");
   });
 });
+
 const mobileMenu = document.getElementById("menu");
 const dropdownMobile = document.getElementById("dropdown-mobile");
 dropdownMobile.addEventListener("click", () => {
